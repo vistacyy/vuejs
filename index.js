@@ -1,12 +1,8 @@
-var vm = new Vue({
-  el: '#demo',
-  data: {
-    firstName: 'Foo',
-    lastName: 'Bar'
-  },
-  computed: {
-    fullName: function () {
-      return this.firstName + ' ' + this.lastName
-    }
-  }
+// 注册
+Vue.component('my-component', {
+  template: '<div>A custom component!</div>'
+})
+// 创建根实例
+new Vue({
+  el: '#example'
 })
