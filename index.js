@@ -1,25 +1,18 @@
-Vue.component('example', {
-  template: '<span>{{ message }}</span>',
-  data: function () {
-    return {
-      message: 'not updated'
-    }
+new Vue({
+  el: '#list-demo',
+  data: {
+    items: [1,2,3,4,5,6,7,8,9],
+    nextNum: 10
   },
   methods: {
-    updateMessage: function () {
-      this.message = 'updated'
-      console.log(this.$el.textContent) // => '没有更新'
-      this.$nextTick(function () {
-        console.log(this.$el.textContent) // => '更新完成'
-      })
-    }
-  }
-})
-
-
-var vm = new Vue({
-  el: '#example',
-  data: {
-    message: '123'
+    randomIndex: function () {
+      return Math.floor(Math.random() * this.items.length)
+    },
+    add: function () {
+      this.items.splice(this.randomIndex(), 0, this.nextNum++)
+    },
+    remove: function () {
+      this.items.splice(this.randomIndex(), 1)
+    },
   }
 })
