@@ -10,9 +10,11 @@
 </head>
 
 <body>
-  <div id="example">
-    <my-component></my-component>
-  </div>
+<div id="counter-event-example">
+  <p>{{ total }}</p>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+</div>
   <script src="index.js"></script>
 </body>
 

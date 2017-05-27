@@ -1,8 +1,25 @@
-// 注册
-Vue.component('my-component', {
-  template: '<div>A custom component!</div>'
+Vue.component('button-counter', {
+  template: '<button v-on:click="increment">{{ counter }}</button>',
+  data: function() {
+    return {
+      counter: 0
+    }
+  },
+  methods: {
+    increment: function() {
+      this.counter += 1
+      this.$emit('increment')
+    }
+  },
 })
-// 创建根实例
 new Vue({
-  el: '#example'
+  el: '#counter-event-example',
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function() {
+      this.total += 1
+    }
+  }
 })
