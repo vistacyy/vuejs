@@ -1,25 +1,25 @@
-Vue.component('button-counter', {
-  template: '<button v-on:click="increment">{{ counter }}</button>',
-  data: function() {
+Vue.component('example', {
+  template: '<span>{{ message }}</span>',
+  data: function () {
     return {
-      counter: 0
+      message: 'not updated'
     }
   },
   methods: {
-    increment: function() {
-      this.counter += 1
-      this.$emit('increment')
+    updateMessage: function () {
+      this.message = 'updated'
+      console.log(this.$el.textContent) // => '没有更新'
+      this.$nextTick(function () {
+        console.log(this.$el.textContent) // => '更新完成'
+      })
     }
-  },
+  }
 })
-new Vue({
-  el: '#counter-event-example',
+
+
+var vm = new Vue({
+  el: '#example',
   data: {
-    total: 0
-  },
-  methods: {
-    incrementTotal: function() {
-      this.total += 1
-    }
+    message: '123'
   }
 })
