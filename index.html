@@ -7,39 +7,41 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script src="vue.js"></script>
+  <script src="vue-router.js"></script>
   <style>
-    .list-item {
-      display: inline-block;
-      margin-right: 10px;
-    }
-    
-    .list-enter-active,
-    .list-leave-active {
-      transition: all 1s;
-    }
-    
-    .list-enter,
-    .list-leave-active {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    
-    .list-move {
-      transition: transform 1s;
-    }
+
   </style>
 </head>
 
 <body>
-  <div id="list-demo" class="demo">
-    <button v-on:click="add">Add</button>
-    <button v-on:click="remove">Remove</button>
-    <transition-group name="list" tag="p">
-      <span v-for="item in items" v-bind:key="item" class="list-item">
-        {{ item }}
-      </span>
-    </transition-group>
+
+
+  <div id="app">
+    <h1>Hello App!</h1>
+    <p>
+      <!-- 使用 router-link 组件来导航. -->
+      <!-- 通过传入 `to` 属性指定链接. -->
+      <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+      <!--<router-link to="/foo">Go to Foo</router-link>
+      <router-link to="/bar">Go to Bar</router-link>-->
+
+      <!--<router-link to="/user/common">Go to user/common</router-link>
+      <router-link to="/user/bar/profile">Go to user/Bar/profile</router-link>
+      <router-link to="/user/bar/posts">Go to user/Bar/posts</router-link>-->
+
+      <router-link :to="{ name: 'user', params: { id: 123 }}">User/123</router-link>
+      <router-link :to="{ name: 'posts', params: { id: 456,posts:'posts111' }}">User/123</router-link>
+      <router-link to="/user/bar/profile">Go to user/Bar/profile</router-link>
+
+
+
+    </p>
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view></router-view>
   </div>
+
+
   <script src="index.js"></script>
 </body>
 
